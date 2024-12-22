@@ -187,6 +187,7 @@ void deleteClient(Client *&clients, int &count, float discount_for_search) {
         for (int i = 0; i < newCount; i++) {
             ofs.write((char*)(&clients[i]), sizeof(Client));
         }
+     ofs.close();
     }
 }
 void updateClient(Client *clients, int count, float discount) {
@@ -269,4 +270,5 @@ void sortClients(Client *clients, int count) {
     for (int i = 0; i < count; i++) {
         ofs.write((char*)(&clients[i]), sizeof(Client));
     }
+    ofs.close();
 }
