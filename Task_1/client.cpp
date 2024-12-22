@@ -69,6 +69,7 @@ void inputClients(Client *clients, int count) {
         std::cin.getline(clients[i].discount_card_number, sizeof(clients[i].discount_card_number));
         ofs.write((char*)(&clients[i]), sizeof(Client));
     }
+    ofs.close();
 }
 void addClients(Client *clients, int &count, int &newCount) {
     std::ofstream ofs;
