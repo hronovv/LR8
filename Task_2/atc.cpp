@@ -70,7 +70,7 @@ void input_calls(ATC *atc, int count) {
         std::cin.getline(atc[i].city_phone_number, sizeof(atc[i].city_phone_number));
         std::cout << "\nВведите номер телефона абонента: ";
         std::cin.getline(atc[i].abonent_phone_number, sizeof(atc[i].abonent_phone_number));
-        ofs << atc[i].city_name << " " <<  atc[i].call_time << " " << atc[i].city_code << " " << atc[i].cost_per_minute << " " << atc[i].call_date << " " << atc[i].city_phone_number << " " << atc[i].abonent_phone_number << std::endl;
+        ofs << atc[i].city_name << std::endl <<  atc[i].call_time << std::endl << atc[i].city_code << std::endl << atc[i].cost_per_minute << std::endl << atc[i].call_date << std::endl << atc[i].city_phone_number << std::endl << atc[i].abonent_phone_number << std::endl;
     }
     ofs.close();
 }
@@ -134,7 +134,7 @@ void add_calls(ATC *atc, int &count, int &newCount) {
         std::cin.getline(atc[i].city_phone_number, sizeof(atc[i].city_phone_number));
         std::cout << "\nВведите номер телефона абонента: ";
         std::cin.getline(atc[i].abonent_phone_number, sizeof(atc[i].abonent_phone_number));
-        ofs << atc[i].city_name << " " <<  atc[i].call_time << " " << atc[i].city_code << " " << atc[i].cost_per_minute << " " << atc[i].call_date << " " << atc[i].city_phone_number << " " << atc[i].abonent_phone_number << std::endl;
+        ofs << atc[i].city_name << std::endl <<  atc[i].call_time << std::endl << atc[i].city_code << std::endl << atc[i].cost_per_minute << std::endl << atc[i].call_date << std::endl << atc[i].city_phone_number << std::endl << atc[i].abonent_phone_number << std::endl;
     }
     ofs.close();
     count += newCount;
@@ -153,16 +153,24 @@ void display_calls(ATC *atc, int count) {
 }
 void display_binary_calls(ATC *atc, int count) {
     std::ifstream ifs("atc.txt");
-    char temp_city_name[100];
+    std::string temp_city_name;
     long long temp_call_time;
-    char temp_city_code[30];
+    std::string temp_city_code;
     long long temp_cost_per_minute;
-    char temp_call_date[150];  
-    char temp_city_phone_number[20];
-    char temp_abonent_phone_number[20];
+    std::string temp_call_date;  
+    std::string temp_city_phone_number;
+    std::string temp_abonent_phone_number;
     std::cout << "\nДанные разговоров:\n";
     for (int i = 0; i < count; i++) {
-        ifs >> temp_city_name >> temp_call_time >> temp_city_code >> temp_cost_per_minute >> temp_call_date >> temp_city_phone_number >> temp_abonent_phone_number;
+        std::getline(ifs, temp_city_name);
+        ifs >> temp_call_time;
+        ifs.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::getline(ifs,temp_city_code);
+        ifs >> temp_cost_per_minute;
+        ifs.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::getline(ifs,temp_call_date);
+        std::getline(ifs,temp_city_phone_number);
+        std::getline(ifs,temp_abonent_phone_number);
         std::cout << "\nГород: " << temp_city_name;
         std::cout << "\nВремя разговора(в минутах): " << temp_call_time;
         std::cout << "\nКод города: " << temp_city_code;
@@ -239,7 +247,7 @@ void change_atc(ATC *atc, int count) {
             std::cout << "\nВведите номер телефона абонента: ";
             std::cin.getline(atc[i].abonent_phone_number, sizeof(atc[i].abonent_phone_number));
         }
-        ofs << atc[i].city_name << " " <<  atc[i].call_time << " " << atc[i].city_code << " " << atc[i].cost_per_minute << " " << atc[i].call_date << " " << atc[i].city_phone_number << " " << atc[i].abonent_phone_number << std::endl;
+        ofs << atc[i].city_name << std::endl <<  atc[i].call_time << std::endl << atc[i].city_code << std::endl << atc[i].cost_per_minute << std::endl << atc[i].call_date << std::endl << atc[i].city_phone_number << std::endl << atc[i].abonent_phone_number << std::endl;
     }
     ofs.close();
 }
@@ -278,7 +286,7 @@ void delete_atc(ATC *&atc, int &count) {
         std::ofstream ofs;
         ofs.open("atc.txt", std::ios::out);
         for (int i = 0; i < newCount; i++) {
-            ofs << atc[i].city_name << " " <<  atc[i].call_time << " " << atc[i].city_code << " " << atc[i].cost_per_minute << " " << atc[i].call_date << " " << atc[i].city_phone_number << " " << atc[i].abonent_phone_number << std::endl;
+            ofs << atc[i].city_name << std::endl <<  atc[i].call_time << std::endl << atc[i].city_code << std::endl << atc[i].cost_per_minute << std::endl << atc[i].call_date << std::endl << atc[i].city_phone_number << std::endl << atc[i].abonent_phone_number << std::endl; 
         }
     ofs.close();
     }
