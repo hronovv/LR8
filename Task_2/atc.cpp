@@ -280,7 +280,7 @@ void delete_atc(ATC *&atc, int &count) {
     }
     atc = (ATC *)realloc(atc, newCount * sizeof(ATC));
     count = newCount;
-    std::cout << "\nГорода с именем" << name_city << " удалены." << std::endl;
+    std::cout << "\nГорода с именем " << name_city << " удалены." << std::endl;
     if (newCount == 0) { remove("atc.txt");}
     else {
         std::ofstream ofs;
