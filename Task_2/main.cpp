@@ -34,7 +34,6 @@ int main() {
                 }
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                atc = (ATC *)malloc(count * sizeof(ATC));
                 input_calls(atc, count);
                 break;
             case 2:
@@ -67,7 +66,6 @@ int main() {
                 }
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                atc = (ATC *)realloc(atc, (count + newCount) * sizeof(ATC));
                 add_calls(atc, count, newCount);
                 break;
             case 5:

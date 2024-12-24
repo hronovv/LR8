@@ -21,10 +21,10 @@ typedef struct {
     char abonent_phone_number[20];
 } ATC;
 void menu();
-void input_calls(ATC *atc, int count);
+void input_calls(ATC *&atc, int count);
 void display_calls(ATC *atc, int count);
 void display_binary_calls(ATC *atc, int count);
-void add_calls(ATC *atc, int &count, int &newCount);
+void add_calls(ATC *&atc, int &count, int &newCount);
 void search_time_and_sum(ATC *atc, int count);
 void change_atc(ATC *atc, int count);
 void delete_atc(ATC *&atc, int &count);

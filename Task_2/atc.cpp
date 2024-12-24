@@ -10,7 +10,8 @@ void menu() {
     std::cout << "7. Удалить данные о городе\n";
     std::cout << "0. Выход\n";
 }
-void input_calls(ATC *atc, int count) {
+void input_calls(ATC *&atc, int count) {
+    atc = (ATC *)malloc(count * sizeof(ATC));
     std::ofstream ofs;
     ofs.open("atc.txt", std::ios::out);
     for (int i = 0; i < count; i++) {
@@ -74,7 +75,8 @@ void input_calls(ATC *atc, int count) {
     }
     ofs.close();
 }
-void add_calls(ATC *atc, int &count, int &newCount) {
+void add_calls(ATC *&atc, int &count, int &newCount) {
+    atc = (ATC *)realloc(atc, (count + newCount) * sizeof(ATC));
     std::ofstream ofs;
     ofs.open("atc.txt", std::ios::app);
     for (int i = count; i < count + newCount; i++) {
