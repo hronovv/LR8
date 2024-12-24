@@ -11,7 +11,8 @@ void menu() {
     std::cout << "8. Сортировать клиентов по скидке\n";
     std::cout << "0. Выход\n";
 }
-void inputClients(Client *clients, int count) {
+void inputClients(Client *&clients, int count) {
+    clients = (Client *)malloc(count * sizeof(Client));
     std::ofstream ofs;
     ofs.open("client.bin", std::ios::out | std::ios::binary);
     for (int i = 0; i < count; i++) {
@@ -71,7 +72,8 @@ void inputClients(Client *clients, int count) {
     }
     ofs.close();
 }
-void addClients(Client *clients, int &count, int &newCount) {
+void addClients(Client *&clients, int &count, int &newCount) {
+    clients = (Client *)realloc(clients, (count + newCount) * sizeof(Client));
     std::ofstream ofs;
     ofs.open("client.bin", std::ios::app | std::ios::binary);
     for (int i = count; i < count + newCount; i++) {

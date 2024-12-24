@@ -19,10 +19,10 @@ typedef struct {
     char discount_card_number[50];
 } Client;
 void menu();
-void inputClients(Client *clients, int count);
+void inputClients(Client *&clients, int count);
 void displayClients(Client *clients, int count);
 void display_binary_Clients(Client *clients, int count);
-void addClients(Client *clients, int &count, int &newCount);
+void addClients(Client *&clients, int &count, int &newCount);
 void searchClients(Client *clients, int count, float discount_for_search);
 void deleteClient(Client *&clients, int &count, float discount_for_search);
 void updateClient(Client *clients, int count, float discount);

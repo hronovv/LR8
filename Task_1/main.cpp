@@ -1,7 +1,7 @@
 #include "client.h"
 #pragma pack(1)
 int main() {
-    remove("client.bin");
+    remove("atc.txt");
     int newCount = 0;
     int count = 0;
     Client* clients = nullptr;
@@ -36,7 +36,6 @@ int main() {
                 }
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                clients = (Client *)malloc(count * sizeof(Client));
                 inputClients(clients, count);
                 break;
             case 2:
@@ -69,7 +68,6 @@ int main() {
                 }
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                clients = (Client *)realloc(clients, (count + newCount) * sizeof(Client));
                 addClients(clients, count, newCount);
                 break;
             case 5:
